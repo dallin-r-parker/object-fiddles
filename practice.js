@@ -225,17 +225,21 @@ var user2 = {
 
 //Create an empty object called methodCollection.
 
-  //Code Here
+ var methodCollection = {
+
+ }
 
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
 
-  //Code Here
+    methodCollection.alertHello = function() { alert("hello")};
+    methodCollection.logHello = function(){console.log("hello")};
 
 //Now call your alertHello and logHello methods.
 
-  //Code Here
+methodCollection.alertHello();
+methodCollection.logHello();
 
 
 
@@ -246,7 +250,10 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 // Create a function called makePerson which takes in name, birthday, ssn as its
 // parameters and returns a new object with all of the information that you passed in.
 
-  //Code Here
+  function makePerson(name, birthday, ssn) {
+      var newPerson = {name: name, birthday: birthday, ssn: ssn};
+      return newPerson;
+  }
 
 
 
@@ -256,7 +263,10 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
 // Create a function called makeCard which takes in cardNumber, expirationDate, and securityCode to make a Credit Card object and returns that object so that whenever you invoke makeCard, you get a brand new credit card.
 
-  //Code Here
+  function makeCard(cardNumber, expirationDate, securityCode) {
+      var newCard = {cardNumber: cardNumber, expirationDate: expirationDate, securityCode: securityCode};
+      return newCard;
+  }
 
 
 
@@ -268,5 +278,17 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
    Now, create a bindCard function that takes in a person object as its first parameter and a creditcard object as its second parameter.
    Have bindCard merge the two parameters together into a new object which contains all the properties from the person as well as the creditcard. While Object.assign would give you the answer, specRunner requires an answer without using it.
 */
+        var personCard = {};
+  function bindCard(person, creditcard) {
+       var personCard = {};   //<--- do not use " === " when setting a value, that's why it didn't work before
 
-  //Code Here
+      for(var key in person) {
+          personCard[key] = person[key];
+      }
+      for(var prop in creditcard) {
+          personCard[prop] = creditcard[prop];
+      }
+      return personCard;
+  }
+
+
